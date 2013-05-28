@@ -1,0 +1,16 @@
+RECORDS         ::= {PITCH_RECORD {TEAM_RECORD}}
+PITCH_RECORD    ::= '<begin pitch>' PITCH_LENGTH PITCH_WIDTH '<\end pitch>'
+TEAM_RECORD     ::= '<begin team>' {TEAM_ATTRIBUTES} '<\end team>'
+PITCH_LENGTH    ::= '<length>' NUMBER '<\length>'
+PITCH_WIDTH     ::= '<width>' NUMBER '<\width>'
+TEAM_ATTRIBUTES ::= '<name>' TEAM_NAME '<\name>' '<numberOfPlayers>' TEAM_NUMBER_OF_PLAYERS '<\numberOfPlayers>' TEAM_STRATEGY
+TEAM_NAME       ::= WORD [' ' WORD]
+TEAM_NUMBER_OF_PLAYERS ::= DIGIT | DIGIT DIGIT
+TEAM_STRATEGY   ::= '<strategy>' TEAM_STRATEGY_CONTENT TEAM_REGIONS '<\strategy>'
+TEAM_STRATEGY_CONTENT ::= 'random' | 'custom' 
+TEAM_REGIONS    ::= {'<region>' POINT POINT '<\region>'}
+POINT           ::= '(' NUMBER ',' NUMBER ')'
+NUMBER          ::= DIGIT NUMBER | DIGIT
+DIGIT           ::= '1'|'2'|'3'|'4'|'5'|'6'|'7'|'8'|'9'|'0'
+WORD            ::= LETTER LETTER WORD | LETTER LETTER LETTER
+LETTER			::= 'A'|'B'|'C'|'D'|'E'|'F'|'G'|'H'|'I'|'J'|'K'|'L'|'M'|'N'|'O'|'P'|'Q'|'R'|'S'|'T'|'U'|'V'|'W'|'X'|'Y'|'Z'|'a'|'b'|'c'|'d'|'e'|'f'|'g'|'h'|'i'|'j'|'k'|'l'|'m'|'n'|'o'|'p'|'q'|'r'|'s'|'t'|'u'|'v'|'w'|'x'|'y'|'z'
